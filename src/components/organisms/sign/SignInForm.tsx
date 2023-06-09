@@ -80,7 +80,7 @@ const SignInForm = () => {
     >
       <LinearProgress />
       <Typography variant="h4" component="h1">
-        SignIn
+        로그인
       </Typography>
       <Box
         sx={{
@@ -128,7 +128,7 @@ const SignInForm = () => {
             sx={{ flex: 1 }}
             onClick={(e) => navigate("/signup")}
           >
-            SignUp
+            회원가입
           </Button>
           <Button
             variant="contained"
@@ -139,7 +139,7 @@ const SignInForm = () => {
             {isLoading ? (
               <CircularProgress color="success" size={24} />
             ) : (
-              "SignIn"
+              "로그인"
             )}
           </Button>
         </Box>

@@ -65,7 +65,7 @@ const SignUpForm = () => {
         password: password,
         passwordConfirm: passwordConfirm,
       });
-      alertStore.setMessage("This is a success alert — check it out!");
+      alertStore.setMessage("가입 메일 확인!");
       navigate("/");
     } catch (e) {
       console.log(e);
@@ -93,7 +93,7 @@ const SignUpForm = () => {
       }}
     >
       <Typography variant="h4" component="h1">
-        SignUp
+        회원가입
       </Typography>
       <Box
         sx={{
@@ -166,7 +166,7 @@ const SignUpForm = () => {
             {isLoading ? (
               <CircularProgress color="success" size={24} />
             ) : (
-              "Signup"
+              "회원가입"
             )}
           </Button>
         </Box>

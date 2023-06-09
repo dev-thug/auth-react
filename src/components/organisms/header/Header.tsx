@@ -1,11 +1,9 @@
 import {
-  Alert,
   AppBar,
   Box,
   IconButton,
   Menu,
   MenuItem,
-  Stack,
   Toolbar,
   Typography,
 } from "@mui/material";
@@ -37,6 +35,7 @@ const Header = () => {
         Authorization: `Bearer ${authStore.authToken}`,
       },
     };
+    authStore.clearToken();
     try {
       const response = await axios.post(
         "http://localhost:3000/auth/logout",
@@ -44,7 +43,7 @@ const Header = () => {
         config
       );
       alertStore.setMessage("Success SignOut!");
-      authStore.clearToken();
+
       navigate("/");
     } catch (e) {
       console.log(e);

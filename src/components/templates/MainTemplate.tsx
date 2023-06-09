@@ -11,9 +11,6 @@ interface MainTemplateProps {
 
 const MainTemplate = ({ children }: MainTemplateProps) => {
   const { alertStore } = useStores();
-  // useEffect(() => {
-  //   const timer =
-  // }, [alertStore]);
 
   return (
     <Box>
