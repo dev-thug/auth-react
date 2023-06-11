@@ -34,7 +34,7 @@ const SignUpTotpConfirm = () => {
 
     try {
       await axios.post(
-        "http://localhost:3000/auth/verification/totp",
+        "https://port-0-auth-nest-7xwyjq992llir9r422.sel4.cloudtype.app/auth/verification/totp",
         {
           token: jwt,
           totp: verificationCode,

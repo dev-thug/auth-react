@@ -15,7 +15,7 @@ const SignUpLinkConfirmPage = () => {
     const verifyJwt = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:3000/auth/verification/link",
+          "https://port-0-auth-nest-7xwyjq992llir9r422.sel4.cloudtype.app/auth/verification/link",
           {
             token: jwt,
           },

@@ -1,11 +1,9 @@
 import {
-  Alert,
   Box,
   Button,
   Card,
   CircularProgress,
   IconButton,
-  LinearProgress,
   TextField,
   Typography,
 } from "@mui/material";
@@ -60,12 +58,23 @@ const SignUpForm = () => {
   const submitHandler = async () => {
     setIsLoading(true);
     try {
-      const result = await axios.post("http://localhost:3000/auth/signup", {
-        email: email,
-        password: password,
-        passwordConfirm: passwordConfirm,
-      });
-      alertStore.setMessage("가입 메일 확인!");
+      const response = await axios.post(
+        "https://port-0-auth-nest-7xwyjq992llir9r422.sel4.cloudtype.app/auth/signup",
+        {
+          email: email,
+          password: password,
+          passwordConfirm: passwordConfirm,
+        }
+      );
+      const { signupType } = response.data;
+      console.log(signupType);
+      let alertMessage = `${email} 가입 완료되었습니다.`;
+      if (signupType === "LINK") {
+        alertMessage = `${email} 가입 링크가 전송되었습니다. 이메일 인증을 해주세요. `;
+      } else if (signupType === "TOTP") {
+        alertMessage = `${email} 가입 확인코드가 전송되었습니다. 이메일 인증을 해주세요. `;
+      }
+      alertStore.setMessage(alertMessage);
       navigate("/");
     } catch (e) {
       console.log(e);

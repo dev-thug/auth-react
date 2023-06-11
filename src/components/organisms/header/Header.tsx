@@ -1,3 +1,4 @@
+import { AccountCircle, Logout, ManageAccounts } from "@mui/icons-material";
 import {
   AppBar,
   Box,
@@ -8,8 +9,8 @@ import {
   Typography,
 } from "@mui/material";
 
-import { AccountCircle } from "@mui/icons-material";
 import { AlertType } from "stores/AlertStore";
+import api from "api/axios.interceptor";
 import axios from "axios";
 import { observer } from "mobx-react-lite";
 import { useNavigate } from "react-router-dom";
@@ -30,19 +31,12 @@ const Header = () => {
   };
 
   const signOutHandler = async () => {
-    let config = {
-      headers: {
-        Authorization: `Bearer ${authStore.authToken}`,
-      },
-    };
-    authStore.clearToken();
     try {
-      const response = await axios.post(
-        "http://localhost:3000/auth/logout",
-        {},
-        config
+      const response = await api.post(
+        "https://port-0-auth-nest-7xwyjq992llir9r422.sel4.cloudtype.app/auth/signout",
+        {}
       );
-      alertStore.setMessage("Success SignOut!");
+      alertStore.setMessage("로그아웃 성공");
 
       navigate("/");
     } catch (e) {
@@ -54,6 +48,7 @@ const Header = () => {
         alertStore.clearMessage();
       }, 3000);
     }
+    authStore.clearToken();
   };
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -96,10 +91,22 @@ const Header = () => {
                   open={Boolean(anchorEl)}
                   onClose={handleClose}
                 >
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={handleClose}>My account</MenuItem>
+                  <MenuItem
+                    onClick={(e) => {
+                      navigate("/account");
+                      handleClose();
+                    }}
+                  >
+                    <ManageAccounts />
+                    <Typography flex={1} textAlign={"center"}>
+                      계정
+                    </Typography>
+                  </MenuItem>
                   <MenuItem onClick={async () => signOutHandler()}>
-                    SignOut
+                    <Logout />
+                    <Typography flex={1} textAlign={"center"}>
+                      로그아웃{" "}
+                    </Typography>
                   </MenuItem>
                 </Menu>
               </>

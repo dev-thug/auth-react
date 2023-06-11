@@ -45,12 +45,15 @@ const SignInForm = () => {
   const submitHandler = async () => {
     setIsLoading(true);
     try {
-      const result = await axios.post("http://localhost:3000/auth/signin", {
-        email: email,
-        password: password,
-      });
+      const result = await axios.post(
+        "https://port-0-auth-nest-7xwyjq992llir9r422.sel4.cloudtype.app/auth/signin",
+        {
+          email: email,
+          password: password,
+        }
+      );
       const { access_token, refresh_token } = result.data;
-      alertStore.setMessage("Success SignIn!");
+      alertStore.setMessage("로그인 성공");
       authStore.setToken(access_token, refresh_token);
       navigate("/");
     } catch (e) {
