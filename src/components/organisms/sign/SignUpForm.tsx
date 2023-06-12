@@ -78,7 +78,7 @@ const SignUpForm = () => {
       navigate("/");
     } catch (e) {
       console.log(e);
-      alertStore.setMessage("Fail SignUp!", AlertType.ERROR);
+      alertStore.setMessage("회원가입중 에러가 발생했습니다!", AlertType.ERROR);
     } finally {
       setIsLoading(false);
       setTimeout(() => {

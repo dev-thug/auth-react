@@ -91,7 +91,10 @@ const Account = () => {
       navigate("/");
     } catch (e) {
       console.log(e);
-      alertStore.setMessage("Fail SignUp!", AlertType.ERROR);
+      alertStore.setMessage(
+        "비밀전호 재설정중 에러가 발생했습니다!",
+        AlertType.ERROR
+      );
     } finally {
       setIsLoading(false);
       setTimeout(() => {

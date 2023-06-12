@@ -5,7 +5,7 @@ export enum TOKEN_TYPE {
   AUTH = "accessToken",
   REFRESH = "refreshToken",
 }
-enum Role {
+export enum Role {
   user,
   admin,
 }
