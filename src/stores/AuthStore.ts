@@ -6,8 +6,8 @@ export enum TOKEN_TYPE {
   REFRESH = "refreshToken",
 }
 export enum Role {
-  user,
-  admin,
+  user = "user",
+  admin = "admin",
 }
 
 interface Payload {
