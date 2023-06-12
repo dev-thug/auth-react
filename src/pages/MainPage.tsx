@@ -8,7 +8,6 @@ import { useStores } from "stores/Context";
 const MainPage = () => {
   const { authStore } = useStores();
 
-  console.log(authStore.payload?.role);
   return (
     <MainTemplate>
       {authStore.payload?.role === Role.admin ? <HomeAdmin /> : <HomeUser />}

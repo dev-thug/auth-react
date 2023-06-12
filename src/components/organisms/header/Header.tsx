@@ -41,7 +41,7 @@ const Header = () => {
       navigate("/");
     } catch (e) {
       console.log(e);
-      alertStore.setMessage("Fail SignOut!", AlertType.ERROR);
+      alertStore.setMessage("로그아웃 에러!", AlertType.ERROR);
     } finally {
       handleClose();
       setTimeout(() => {

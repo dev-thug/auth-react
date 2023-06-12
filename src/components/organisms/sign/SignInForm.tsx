@@ -53,12 +53,12 @@ const SignInForm = () => {
         }
       );
       const { access_token, refresh_token } = result.data;
-      alertStore.setMessage("로그인 성공");
+      alertStore.setMessage("로그인 성공했습니다.");
       authStore.setToken(access_token, refresh_token);
       navigate("/");
     } catch (e) {
       console.log(e);
-      alertStore.setMessage("Fail SignIn!", AlertType.ERROR);
+      alertStore.setMessage("로그인에 실패했습니다!", AlertType.ERROR);
     } finally {
       setIsLoading(false);
       setTimeout(() => {
@@ -85,6 +85,15 @@ const SignInForm = () => {
       <Typography variant="h4" component="h1">
         로그인
       </Typography>
+      <Box>
+        <Typography variant="body1" component="p">
+          어드민 계정
+        </Typography>
+        <Typography variant="body1" component="p" color={"red"}>
+          이메일: admin@domain.com <br />
+          비밀번호: 12341234
+        </Typography>
+      </Box>
       <Box
         sx={{
           display: "flex",
