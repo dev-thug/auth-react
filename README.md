@@ -1,46 +1,40 @@
-# Getting Started with Create React App
+## 소개
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- 백엔드 기능을 테스트하기 위한 웹
+- Mui 디자인 시스템을 사용하여 UI 구성
+- Mobx 전역상태 관리
 
-## Available Scripts
+## 데모
 
-In the project directory, you can run:
+- https://auth-react-one.vercel.app/
 
-### `npm start`
+## 백엔드 상세 기능
 
-Runs the app in the development mode.\
-Open [https://port-0-auth-nest-7xwyjq992llir9r422.sel4.cloudtype.app](https://port-0-auth-nest-7xwyjq992llir9r422.sel4.cloudtype.app) to view it in the browser.
+### 사용자 등록 및 로그인
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- 사용자 시스템에 회원가입시 이메일 검증 프로세스(링크, 인증코드)
+- 사용자 로그인후 access-token, refresh-token 생성
+- 로그인된 사용자 refresh-token 캐시서버에서 관리
 
-### `npm test`
+### 비밀번호 관리
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Salt 해싱 기술을 사용한 암호의 안전한 저장
 
-### `npm run build`
+### 가입 모드 구성
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 가입 프로세스를 LINK, TOTP, NoEmailVerification 모드로 런타임중 업데이트
+- LINK로 설정되어 있는 경우 확인 링크가 사용자의 이메일로 전송
+- TOTP로 설정된 경우 확인 코드가 생성되어 사용자의 이메일로 전송
+- NoEmailVerification로 가입 모드가 설정된 경우 사용자 이메일검증X
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 토큰 관리
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- access-token 15분 만료, refresh-token 30일 만료
+- 사용자 로그아웃시 refresh-token 취소 기능
+- refresh-token으로 access-token 발급
+- redis 캐시 서버를 사용하여 token 관리
 
-### `npm run eject`
+### 인증과 인가
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- 권한 부여하여 API에 대한 액세스를 제어
+- Gurad에서 사용자 인증 및 허가 처리
